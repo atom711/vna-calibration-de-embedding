@@ -45,7 +45,7 @@ $$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_
 
 The inverted scattering matrix tracks absolute convergence across the entire wideband radar sweep:
 
-![Verification Plot](plots/verification_plot.png)
+![Verification Plot](plots/de_embedding_verification_plot.png)
 
 * **Top Panel (Real Permittivity):** Captures stable dielectric tracking locked onto the 4.4 fiberglass baseline, proving zero phase ambiguity divergence.
 * **Bottom Panel (Loss Tangent):** Verifies tightly constrained material energy dissipation tracking centered cleanly on the 0.02 target specification window.
