@@ -2,7 +2,7 @@
 
 ## Objective & Purpose
 
-This repository houses an automated Python modeling tool designed to simulate and synthesize the systematic phase and reflection errors introduced by mismatched adapters in an open-air microwave test setup. By utilizing forward-cascading network mechanics in scikit-rf, the engine models how characteristic impedance discontinuities ($Z_0 \neq 50\ \Omega$) inject standing-wave interference anomalies onto an ideal Device Under Test (DUT).
+This repository houses an automated Python modeling tool designed to simulate and synthesize the systematic phase and reflection errors introduced by mismatched adapters in an open-air microwave test setup. By utilizing forward-cascading network mechanics in scikit-rf, the script models how characteristic impedance discontinuities ($Z_0 \neq 50\ \Omega$) inject standing-wave interference anomalies onto an ideal Device Under Test (DUT).
 
 When conducting open-air RF material testing, moving beyond perfect coaxial cables introduces immediate physical propagation complexities. Chief among these is aperture phase error; because a standard horn antenna launches energy as an expanding spherical wavefront, phase velocity vectors do not arrive simultaneously across a flat target sample. If the sample panel is positioned too close to the antenna apertures, this spatial phase gradient corrupts the scattering matrix measurements.
 
