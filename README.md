@@ -26,7 +26,7 @@ The modeling engine synthesizes complex scattering network matrices through the 
    * Models a 35-Ohm lossy dielectric material sample (DUT) using defined complex gamma propagation constants.
 3. **Forward Cascade Execution:** Synthesizes the total uncalibrated, messy measurement grid (T\_measured) by applying linear, non-commutative matrix network multiplication across the cascaded junctions:
 
-$$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_{\text{adapter\_right}}$$
+$$T_{\text{measured}} = T_{\text{adapter-left}} \times T_{\text{DUT}} \times T_{\text{adapter-right}}$$
 
 4. **Validation Layer:** Converts the cascaded networks back into standard Touchstone datasets, embedding the cyclical 0.30 dB amplitude ripple, and exports the raw .s2p files for baseline tracking.
 
@@ -45,7 +45,7 @@ $$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_
 
 The inverted scattering matrix tracks absolute convergence across the entire wideband radar sweep:
 
-![Verification Plot](plots/de_embedding_verification_plot.png)
+![Verification Plot](plots/de_embedding_verification.png)
 
 * **Top Panel (Real Permittivity):** Captures stable dielectric tracking locked onto the 4.4 fiberglass baseline, proving zero phase ambiguity divergence.
 * **Bottom Panel (Loss Tangent):** Verifies tightly constrained material energy dissipation tracking centered cleanly on the 0.02 target specification window.
