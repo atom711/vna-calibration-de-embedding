@@ -26,7 +26,7 @@ Processes complex scattering network matrices through the following analytical a
    * Pulls the hard-coded calibration fixture boundaries (`T_adapter-left` and `T_adapter-right`).
 3. **De-Embedding Execution:** Computes the true, unshielded parameters of the Device Under Test (`T_DUT`) by applying network inversion matrix multiplication:
 
-$$T_{\text{DUT}} = T_{\text{adapter\_left}}^{-1} \times T_{\text{measured}} \times T_{\text{adapter\_right}}^{-1}$$
+$$T_{\text{DUT}} = T_{\text{adapter\ left}}^{-1} \times T_{\text{measured}} \times T_{\text{adapter\ right}}^{-1}$$
 
 4. **Validation Layer:** Automatically maps the clean `T_DUT` matrix back into standard S-parameters, completely stripping away the cyclical 0.30 dB amplitude ripple and outputting the true insertion loss profile of the substrate.
 
