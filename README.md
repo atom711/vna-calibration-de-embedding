@@ -8,11 +8,11 @@ When conducting open-air RF material testing, moving beyond perfect coaxial cabl
 
 To ensure uniform plane-wave propagation assumptions remain valid, the testing geometry must be configured beyond the Rayleigh far-field boundary threshold:
 
-R_ff >= (2 * D^2) / lambda
+$$R_{\text{ff}} \ge \frac{2D^2}{\lambda}$$
 
 Operating at an 18 GHz ceiling with an antenna aperture dimension of D = 8 cm, a physical separation distance of at least **76.8 cm** must be rigidly maintained between the horn faces and the target frame.
 
-Furthermore, the intervening physical media constraints (mismatched 60-Ohm transmission lines, air gaps, and structural adapters) create characteristic impedance discontinuities (Z0 != 50 Ohm), giving rise to secondary internal echoes. These waves form a periodic standing-wave-like interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum (S21), masking true material resonance nulls.
+Furthermore, the intervening physical media constraints (mismatched 60-Ohm transmission lines, air gaps, and structural adapters) create characteristic impedance discontinuities ($Z_0 \neq 50\ \Omega$), giving rise to secondary internal echoes. These waves form a periodic standing-wave-like interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum (S21), masking true material resonance nulls.
 
 ---
 
@@ -24,9 +24,9 @@ The modeling engine synthesizes complex scattering network matrices through the 
 2. **Matrix Transformation Core:** 
    * Models the left and right physical adapters as mismatched 60-Ohm lossless transmission lines with a specified electrical length.
    * Models a 35-Ohm lossy dielectric material sample (DUT) using defined complex gamma propagation constants.
-3. **Forward Cascade Execution:** Synthesizes the total uncalibrated, messy measurement grid (T_measured) by applying linear, non-commutative matrix network multiplication across the cascaded junctions:
+3. **Forward Cascade Execution:** Synthesizes the total uncalibrated, messy measurement grid (T\_measured) by applying linear, non-commutative matrix network multiplication across the cascaded junctions:
 
-T_measured = T_adapter_left * T_DUT * T_adapter_right
+$$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_{\text{adapter\_right}}$$
 
 4. **Validation Layer:** Converts the cascaded networks back into standard Touchstone datasets, embedding the cyclical 0.30 dB amplitude ripple, and exports the raw .s2p files for baseline tracking.
 
