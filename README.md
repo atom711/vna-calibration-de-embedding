@@ -1,28 +1,27 @@
 # Free-Space Reference Plane Calibration & Matrix De-Embedding Engine
 
-This repository houses an automated Python processing engine designed to shift VNA calibration reference planes away from antenna apertures and lock them directly onto a target material's surface face. By utilizing cascading Scattering Transfer parameters (T-matrices) derived from 2-port complex scattering metrics (S11, S21), the engine programmatically divides out systematic fixture reflections and phase velocity sags.
-
----
-
 ## Objective & Purpose
+
+This repository houses an automated Python processing pipeline designed to shift VNA calibration reference planes away from antenna apertures and lock them directly onto a target material's surface face. By utilizing cascading Scattering Transfer parameters (T-matrices) derived from 2-port complex scattering metrics (S11, S21), the engine programmatically divides out systematic fixture reflections and phase velocity sags.
+
 When conducting open-air RF material testing, moving beyond perfect coaxial cables introduces immediate physical propagation complexities. Chief among these is aperture phase error; because a standard horn antenna launches energy as an expanding spherical wavefront, phase velocity vectors do not arrive simultaneously across a flat target sample. If the sample panel is positioned too close to the antenna apertures, this spatial phase gradient corrupts the scattering matrix measurements.
 
 To ensure uniform plane-wave propagation assumptions remain valid, the testing geometry must be configured beyond the Rayleigh far-field boundary threshold:
 
 R_ff >= (2 * D^2) / lambda
 
-Operating at an 18 GHz ceiling with an antenna aperture dimension of D = 8 cm, a physical separation distance of at least **76.8 cm** must be rigidly maintained between the horn faces and the target frame. 
+Operating at an 18 GHz ceiling with an antenna aperture dimension of D = 8 cm, a physical separation distance of at least **76.8 cm** must be rigidly maintained between the horn faces and the target frame.
 
-Furthermore, the intervening physical media constraints (air gaps, specimen holders, and structural adapters) create characteristic impedance discontinuities (Z0 != 50 Ohm), giving rise to secondary internal echoes. These waves form a periodic standing-wave interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum (S21), masking true material resonance nulls. 
+Furthermore, the intervening physical media constraints (air gaps, specimen holders, and structural adapters) create characteristic impedance discontinuities (Z0 != 50 Ohm), giving rise to secondary internal echoes. These waves form a periodic standing-wave interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum (S21), masking true material resonance nulls.
 
 ---
 
 ## Signal Processing Pipeline
 
-The engine converts standard, non-cascadable Scattering matrices (S-parameters) into linear, non-commutative Scattering Transfer matrices (T-parameters) to execute fixture isolation through the following analytical architecture:
+The ingestion engine processes complex scattering network matrices through the following analytical architecture:
 
 1. **Input Stage:** Ingests raw, uncalibrated complex S-parameter datasets spanning the 8-18 GHz band.
-2. **Matrix Transformation Core:** 
+2. **Matrix Transformation Core:**
    * Maps standard 2-port S-matrices to forward-cascading T-matrices.
    * Pulls the hard-coded calibration fixture boundaries (T_adapter_left and T_adapter_right).
 3. **De-Embedding Execution:** Computes the true, unshielded parameters of the Device Under Test (T_DUT) by applying network inversion matrix multiplication:
@@ -35,14 +34,25 @@ T_DUT = inv(T_adapter_left) * T_measured * inv(T_adapter_right)
 
 ## Repository Architecture
 
-* `deEmbedEngine.py` - Core object-oriented Python pipeline executing the T-matrix cascading inversions.
-* `plots/fixture_verification_plot.png` - Extracted, ripple-free transmission spectrum curves vs. uncalibrated raw baselines.
-* `requirements.txt` - Python module dependency manifest (`scikit-rf`, `numpy`, `matplotlib`).
+* `deEmbedEngine.py` - Core Python processing script implementing the inversion engine.
+* `plots/fixture_verification_plot.png` - Extracted material parameters vs. target specification baselines.
+* `requirements.txt` - Python module dependency manifest.
 * `.gitignore` - Standard Git runtime file exclusion mask.
 
 ---
 
-## Core Competencies Demonstrated
-* **Microwave Physics:** S-parameter translation, complex matrix inversion loops, and free-space wave propagation geometry.
-* **Idb_tag Automation workflows:** Programmatic data normalization workflows replicating high-end hardware vector calibration runs.
-* **Signal Integrity:** Advanced filtering of standing-wave reflection anomalies without introducing digital phase distortions.
+## CALIBRATION VERIFICATION DATA
+
+The inverted scattering matrix tracks absolute convergence across the entire wideband radar sweep:
+
+![Fixture Verification Plot](plots/fixture_verification_plot.png)
+
+* **Top Panel (Transmission Magnitude S21):** Captures stable transmission tracking locked onto the baseline matrix, proving zero phase ambiguity divergence.
+* **Bottom Panel (Phase Extraction):** Verifies tightly constrained material phase alignment tracking centered cleanly on the target specification window.
+
+---
+
+## Execution & Requirements
+
+The codebase utilizes numpy and matplotlib to handle high-dimensional vector loops.
+
