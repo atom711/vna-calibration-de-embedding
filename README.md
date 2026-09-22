@@ -56,3 +56,7 @@ The inverted scattering matrix tracks absolute convergence across the entire wid
 
 The codebase utilizes numpy and matplotlib to handle high-dimensional vector loops.
 
+```bash
+pip install -r requirements.txt
+python src/deEmbedSparams.py
+```
