@@ -18,7 +18,7 @@ Furthermore, the intervening physical media constraints (air gaps, specimen hold
 
 ## Signal Processing Pipeline
 
-The ingestion engine processes complex scattering network matrices through the following analytical architecture:
+Processes complex scattering network matrices through the following analytical architecture:
 
 1. **Input Stage:** Ingests raw, uncalibrated complex S-parameter datasets spanning the 8-18 GHz band.
 2. **Matrix Transformation Core:**
@@ -34,8 +34,8 @@ T_DUT = inv(T_adapter_left) * T_measured * inv(T_adapter_right)
 
 ## Repository Architecture
 
-* `deEmbedEngine.py` - Core Python processing script implementing the inversion engine.
-* `plots/fixture_verification_plot.png` - Extracted material parameters vs. target specification baselines.
+* `deEmbedSparams.py` - Core Python processing script implementing the inversion.
+* `plots/verification_plot.png` - Extracted material parameters vs. target specification baselines.
 * `requirements.txt` - Python module dependency manifest.
 * `.gitignore` - Standard Git runtime file exclusion mask.
 
@@ -45,7 +45,7 @@ T_DUT = inv(T_adapter_left) * T_measured * inv(T_adapter_right)
 
 The inverted scattering matrix tracks absolute convergence across the entire wideband radar sweep:
 
-![Fixture Verification Plot](plots/fixture_verification_plot.png)
+![Fixture Verification Plot](plots/verification_plot.png)
 
 * **Top Panel (Transmission Magnitude S21):** Captures stable transmission tracking locked onto the baseline matrix, proving zero phase ambiguity divergence.
 * **Bottom Panel (Phase Extraction):** Verifies tightly constrained material phase alignment tracking centered cleanly on the target specification window.
