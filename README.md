@@ -46,7 +46,7 @@ The synthesized transmission matrix tracks absolute convergence across the entir
 
 ![Verification Plot](plots/de_embedding_verification.png)
 
-* **Transmission Magnitude (\(S_{21}\)):** Captures the simulated 0.30 dB peak-to-peak tracking error ripple cycling rhythmically across the 8-18 GHz band, overlaid with the perfectly flat, de-embedded -1.04 dB material baseline.
+* **Transmission Magnitude ($S_{21}$):** Captures the simulated 0.30 dB peak-to-peak tracking error ripple cycling rhythmically across the 8-18 GHz band, overlaid with the perfectly flat, de-embedded -1.04 dB material baseline.
 
 ---
 
