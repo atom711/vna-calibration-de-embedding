@@ -25,7 +25,7 @@ The modeling engine synthesizes uncalibrated scattering network matrices through
 3. **Forward Cascade Execution:** Mathematically superimposes a cyclical, frequency-dependent phase and amplitude error directly onto the forward transmission parameters (`total_measurement`) using a 1.5 GHz ripple period to simulate physical standing-wave paths:
 
 
-$$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_{\text{adapter\_right}}$$
+$$T_{\text{measured}} = T_{\text{adapter-left}} \times T_{\text{DUT}} \times T_{\text{adapter-right}}$$
 
 4. **Validation Layer:** Converts the modified network structures back into standard Touchstone datasets and exports the raw .s2p files directly into the local repository layout.
 
@@ -33,7 +33,7 @@ $$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_
 
 ## Repository Architecture
 
-* `src/combined.py` - Core Python script executing the baseline creation, ripple injection loop, and data plotting.
+* `src/deEmbedSparams.py` - Core Python script executing the baseline creation, ripple injection loop, and data plotting.
 * `plots/de_embedding_verification.png` - Extracted wideband transmission spectrum tracking curves vs. uncalibrated raw baselines.
 * `requirements.txt` - Python module dependency manifest.
 * `.gitignore` - Standard Git runtime file exclusion mask.
