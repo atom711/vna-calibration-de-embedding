@@ -8,11 +8,11 @@ When conducting open-air RF material testing, moving beyond perfect coaxial cabl
 
 To ensure uniform plane-wave propagation assumptions remain valid, the testing geometry must be configured beyond the Rayleigh far-field boundary threshold:
 
-\[R_{\text{ff}} \ge \frac{2D^2}{\lambda}\]
+$$R_{\text{ff}} \ge \frac{2D^2}{\lambda}$$
 
 Operating at an 18 GHz ceiling with an antenna aperture dimension of D = 8 cm, a physical separation distance of at least **76.8 cm** must be rigidly maintained between the horn faces and the target frame.
 
-Furthermore, the intervening physical media constraints create characteristic impedance discontinuities (\(Z_0 \neq 50\ \Omega\)), giving rise to secondary internal echoes. These waves form a periodic standing-wave-like interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum (\(S_{21}\)), masking true material resonance nulls across the **10 mm** dielectric substrate sample block.
+Furthermore, the intervening physical media constraints create characteristic impedance discontinuities ($Z_0 \neq 50\ \Omega$), giving rise to secondary internal echoes. These waves form a periodic standing-wave-like interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum ($S_{21}$), masking true material resonance nulls across the **10 mm** dielectric substrate sample block.
 
 ---
 
@@ -24,7 +24,7 @@ The modeling engine synthesizes uncalibrated scattering network matrices through
 2. **Baseline Material Generation:** Models an ideal 10 mm lossy dielectric transmission line (`isolated_material`) within a uniform 50-Ohm characteristic impedance environment (`z0=50`), applying a precise attenuation constant of alpha = 12.0.
 3. **Forward Cascade Execution:** Mathematically superimposes a cyclical, frequency-dependent phase and amplitude error directly onto the forward transmission parameters (`total_measurement`) using a 1.5 GHz ripple period to simulate physical standing-wave paths:
 
-\[total\_measurement.s[:, 1, 0] = isolated\_material.s[:, 1, 0] \times 10^{\frac{ripple}{20}}\]
+$$total\_measurement.s[:, 1, 0] = isolated\_material.s[:, 1, 0] \times 10^{\frac{ripple}{20}}$$
 
 4. **Validation Layer:** Converts the modified network structures back into standard Touchstone datasets and exports the raw .s2p files directly into the local repository layout.
 
