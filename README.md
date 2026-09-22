@@ -21,10 +21,11 @@ Furthermore, the intervening physical media constraints create characteristic im
 The modeling engine synthesizes uncalibrated scattering network matrices through the following analytical architecture:
 
 1. **Input Stage:** Establishes a wideband frequency sweep from 8 to 18 GHz over 401 points, mapping directly to standard X-band and Ku-band radar testing spectrums.
-2. **Baseline Material Generation:** Models an ideal 10 mm lossy dielectric transmission line (`isolated_material`) within a uniform 50-Ohm characteristic impedance environment (`z0=50`), applying a precise attenuation constant of alpha = 12.0.
+2. **Baseline Material Generation:** Models an ideal 8 mm lossy dielectric transmission line (`DUT`) within a uniform 50-Ohm characteristic impedance environment (`z0=50`), applying a precise attenuation constant of alpha = 12.0.
 3. **Forward Cascade Execution:** Mathematically superimposes a cyclical, frequency-dependent phase and amplitude error directly onto the forward transmission parameters (`total_measurement`) using a 1.5 GHz ripple period to simulate physical standing-wave paths:
 
-$$total\_measurement.s[:, 1, 0] = isolated\_material.s[:, 1, 0] \times 10^{\frac{ripple}{20}}$$
+
+$$T_{\text{measured}} = T_{\text{adapter\_left}} \times T_{\text{DUT}} \times T_{\text{adapter\_right}}$$
 
 4. **Validation Layer:** Converts the modified network structures back into standard Touchstone datasets and exports the raw .s2p files directly into the local repository layout.
 
