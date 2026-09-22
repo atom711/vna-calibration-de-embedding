@@ -54,5 +54,5 @@ The codebase utilizes scikit-rf and matplotlib to handle high-dimensional vector
 
 ```bash
 pip install -r requirements.txt
-python src/combined.py
+python src/deEmbedSparams.py
 ```
