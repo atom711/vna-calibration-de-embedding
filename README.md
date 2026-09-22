@@ -2,7 +2,7 @@
 
 ## Objective & Purpose
 
-This is an implementation of a 2-port cascading scattering transfer matrix inersion pipeline to achieve free-space de-embedding across an 8-18 GHz frequency sweep. By utilizing network matrix manipulation in scikit-rf, the engine models how uncalibrated system reflections inject standing-wave-like interference anomalies onto an ideal, lossy Device Under Test (DUT).
+This is an implementation of a 2-port cascading scattering transfer matrix inversion pipeline to achieve free-space de-embedding across an 8-18 GHz frequency sweep. By utilizing network matrix manipulation in scikit-rf, the engine models how uncalibrated system reflections inject standing-wave-like interference anomalies onto an ideal, lossy Device Under Test (DUT).
 
 When conducting open-air RF material testing, moving beyond perfect coaxial cables introduces immediate physical propagation complexities. Chief among these is aperture phase error. Because a standard horn antenna launches energy as an expanding spherical wavefront, phase velocity vectors do not arrive simultaneously across a flat target sample. If the sample panel is positioned too close to the antenna apertures, this spatial phase gradient corrupts the scattering matrix measurements.
 
