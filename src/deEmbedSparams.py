@@ -21,7 +21,7 @@ media_50 = rf.media.DefinedGammaZ0(freq, z0=50)
 alpha = 12.0
 beta = freq.w / 3e8
 media_dut = rf.media.DefinedGammaZ0(freq, z0=50, gamma=(alpha + 1j*beta))
-isolated_material = media_dut.line(10, 'mm', name='isolated_material_output')
+isolated_material = media_dut.line(8, 'mm', name='isolated_material_output')
 
 # 4. Create the raw uncalibrated measurement by injecting a physical 
 # standing wave ripple (simulating reflection interference from uncalibrated fixtures)
