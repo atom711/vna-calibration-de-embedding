@@ -2,9 +2,9 @@
 
 ## Objective & Purpose
 
-This is an implementation of a 2-port cascading scattering transfer matrix inversion pipeline to achieve free-space de-embedding across an 8-18 GHz frequency sweep. By utilizing network matrix manipulation in scikit-rf, the engine models how uncalibrated system reflections inject standing-wave-like interference anomalies onto an ideal, lossy Device Under Test (DUT).
+This is an implementation of a 2-port cascading scattering transfer matrix inversion pipeline to achieve free-space de-embedding across an 8-18 GHz frequency sweep. By utilizing network matrix manipulation in scikit-rf, I am able to model how uncalibrated system reflections inject standing-wave-like interference anomalies onto an ideal, lossy Device Under Test (DUT).
 
-When conducting open-air RF material testing, moving beyond perfect coaxial cables introduces immediate physical propagation complexities. Chief among these is aperture phase error. Because a standard horn antenna launches energy as an expanding spherical wavefront, phase velocity vectors do not arrive simultaneously across a flat target sample. If the sample panel is positioned too close to the antenna apertures, this spatial phase gradient corrupts the scattering matrix measurements.
+Open-air RF material testing introduces physical propagation complexities. Chief among these is aperture phase error. Because a standard horn antenna emits energy as an expanding spherical wavefront, phase velocity vectors do not arrive simultaneously across a flat target sample. If the sample panel is positioned too close to the antenna apertures, this spatial phase gradient corrupts the scattering matrix measurements.
 
 To ensure uniform plane-wave propagation assumptions remain valid, the testing geometry must be configured beyond the Rayleigh far-field boundary threshold:
 
@@ -12,16 +12,14 @@ $$R_{\text{ff}} \ge \frac{2D^2}{\lambda}$$
 
 Operating at an 18 GHz ceiling with an antenna aperture dimension of D = 8 cm, a physical separation distance of at least **76.8 cm** must be rigidly maintained between the horn faces and the target frame.
 
-Furthermore, the intervening physical media constraints create characteristic impedance discontinuities ($Z_0 \neq 50\ \Omega$), giving rise to secondary internal echoes. These waves form a periodic standing-wave-like interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum ($S_{21}$), masking true material resonance nulls across the **10 mm** dielectric substrate sample block.
+The physical media creates characteristic impedance discontinuities ($Z_0 \neq 50\ \Omega$), producing secondary internal echoes. These waves form a periodic standing-wave-like interference pattern that superimposes a prominent **0.30 dB amplitude ripple** onto the transmission spectrum ($S_{21}$), masking true material resonance nulls across the **10 mm** dielectric substrate sample block.
 
 ---
 
 ## Signal Processing Pipeline
 
-The modeling engine synthesizes uncalibrated scattering network matrices through the following analytical architecture:
-
 1. **Input Stage:** Establishes a wideband frequency sweep from 8 to 18 GHz over 401 points, mapping directly to standard X-band and Ku-band radar testing spectrums.
-2. **Baseline Material Generation:** Models an ideal 8 mm lossy dielectric transmission line (`DUT`) within a uniform 50-Ohm characteristic impedance environment (`z0=50`), applying a precise attenuation constant of alpha = 12.0.
+2. **Baseline Material Generation:** Models an ideal 10 mm lossy dielectric transmission line (`DUT`) within a uniform 50-Ohm characteristic impedance environment (`z0=50`), applying a precise attenuation constant of alpha = 12.0.
 3. **Forward Cascade Execution:** Mathematically superimposes a cyclical, frequency-dependent phase and amplitude error directly onto the forward transmission parameters (`total_measurement`) using a 1.5 GHz ripple period to simulate physical standing-wave paths:
 
 
