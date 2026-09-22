@@ -45,7 +45,7 @@ T_DUT = inv(T_adapter_left) * T_measured * inv(T_adapter_right)
 
 The inverted scattering matrix tracks absolute convergence across the entire wideband radar sweep:
 
-![Fixture Verification Plot](plots/verification_plot.png)
+![Fixture Verification Plot](plots/de_embedding_verification.png)
 
 * **Top Panel (Transmission Magnitude S21):** Captures stable transmission tracking locked onto the baseline matrix, proving zero phase ambiguity divergence.
 * **Bottom Panel (Phase Extraction):** Verifies tightly constrained material phase alignment tracking centered cleanly on the target specification window.
