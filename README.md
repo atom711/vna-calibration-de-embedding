@@ -34,7 +34,7 @@ $$T_{\text{DUT}} = T_{\text{adapter\ left}}^{-1} \times T_{\text{measured}} \tim
 
 ## Repository Architecture
 
-* `deEmbedSparams.py` - Core Python processing script implementing the inversion.
+* `src/deEmbedSparams.py` - Core Python processing script implementing the inversion.
 * `plots/verification_plot.png` - Extracted material parameters vs. target specification baselines.
 * `requirements.txt` - Python module dependency manifest.
 * `.gitignore` - Standard Git runtime file exclusion mask.
